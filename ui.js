@@ -1,6 +1,7 @@
 class UI {
     constructor() {
         this.profile = document.getElementById('profile');
+
     }
 
     showProfile(user) {
@@ -29,5 +30,28 @@ class UI {
             </div>
             <h3 class="page-heading mb-3">Latest Repos</h3> 
         `;
+    }
+
+    showAlert(message, className) {
+        this.clearAlert();
+        this.clearProfile();
+        const div = document.createElement('div');
+        div.className = className;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.searchContainer');
+        const search = document.querySelector('.search');
+        container.insertBefore(div, search);
+    }
+
+    clearAlert() {
+        const currentAlert = document.querySelector('.alert');
+
+        if(currentAlert) {
+            currentAlert.remove();
+        }
+    }
+
+    clearProfile() {
+        this.profile.innerHTML = '';
     }
 }
